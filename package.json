@@ -44,6 +44,11 @@
     "lodash": "4.17.4"
   },
   "config": {
+    "commitTypeMap": {
+      "style": "patch",
+      "test": "patch",
+      "chore": "patch"
+    },
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
