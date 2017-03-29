@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-props-fela",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Show props of a fela component in storybook",
   "main": "lib/index.js",
   "author": "wcastand",
