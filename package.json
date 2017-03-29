@@ -16,6 +16,7 @@
     "test": "npm run lint && npm run test:all",
     "test:all": "jest",
     "test:dev": "jest --watch",
+    "prebuild": "rimraf lib",
     "storybook": "start-storybook -p 6006 -c ./exemple/.storybook",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -32,11 +33,11 @@
     "react-fela": "^4.3.2",
     "react-test-renderer": "^15.4.2",
     "regenerator-runtime": "^0.10.3",
+    "rimraf": "^2.6.1",
     "semantic-release": "^6.3.2"
   },
   "dependencies": {
     "fela": "4.3.2",
-    "lodash": "4.17.4",
-    "react-docgen": "^2.13.0"
+    "lodash": "4.17.4"
   }
 }
