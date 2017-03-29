@@ -23,17 +23,27 @@ const noRoot = () => <Test color="#000">Hello</Test>;
 const withDefault = () => <TestWithDefault color="#000">Hello</TestWithDefault>;
 
 test('isProvider', () => {
-  const provider = { type: { name: 'Provider' } };
-  const noProvider = { type: { name: 'Hello' } };
+  const provider1 = { type: { displayName: 'Provider' } };
+  const provider2 = { type: 'Provider' };
+  const provider3 = { type: function Provider() {} };
 
-  expect(isProvider(provider)).toBe(true);
-  expect(isProvider(noProvider)).toBe(false);
+  const noProvider1 = { type: { displayName: 'Test' } };
+  const noProvider2 = { type: 'div' };
+  const noProvider3 = { type: function Test() {} };
+
+  expect(isProvider(provider1)).toBe(true);
+  expect(isProvider(provider2)).toBe(true);
+  expect(isProvider(provider3)).toBe(true);
+
+  expect(isProvider(noProvider1)).toBe(false);
+  expect(isProvider(noProvider2)).toBe(false);
+  expect(isProvider(noProvider3)).toBe(false);
 });
 
 test('exploreChildren', () => {
-  expect(exploreChildren(root())).toEqual(noRoot());
-  expect(exploreChildren(deepRoot())).toEqual(noRoot());
-  expect(exploreChildren(noRoot())).toEqual(noRoot());
+  expect(exploreChildren('Test')(root())).toEqual(noRoot());
+  expect(exploreChildren('Test')(deepRoot())).toEqual(noRoot());
+  expect(exploreChildren('Test')(noRoot())).toEqual(noRoot());
 });
 
 test('parseProps', () => {

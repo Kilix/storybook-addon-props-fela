@@ -2,14 +2,18 @@ import React from 'react';
 import compose from 'lodash/fp/compose';
 import omit from 'lodash/fp/omit';
 
+export const getName = El =>
+  typeof El.type === 'function'
+    ? El.type.name
+    : typeof El.type === 'object' ? El.type.displayName : El.type;
+
 // React element -> Boolean
-export const isProvider = El => El.type.name === 'Provider';
+export const isProvider = El => getName(El) === 'Provider';
+
 // React element -> Object
 export const exploreChildren = target =>
   El =>
-    !isProvider(El) &&
-      (target === null ||
-        (El.type.displayName ? El.type.displayName : El.type) === target.toLowerCase())
+    (!isProvider(El) && target === '') || getName(El).toUpperCase() === target.toUpperCase()
       ? El
       : exploreChildren(target)(El.props.children);
 
@@ -43,7 +47,7 @@ export const listProps = props =>
   );
 
 // Story -> JSX
-export const PropsProvider = (target = null) =>
+export const PropsProvider = (target = '') =>
   story => (
     <div>
       {story()}
