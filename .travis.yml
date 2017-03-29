@@ -1,6 +1,13 @@
 language: node_js
 deploy:
-api_key: "15a8e926-ad07-4863-93e3-868dd41fb55f"
+  provider: npm
+  email: wcastan@gmail.com
+  api_key:
+    secure: DGaiaTSq+UGlUK3wmYwl48MKpjXrrCX1lowOeOflOakrqqnpCjZk8q5Y/6sPUsmtdsJd9VrcdvqZKN34f62E1ILosyHnBOtvYGxHhWe5FLU3z3fSSD52J4BjG6P1SDt80pxT7+K6Qj+sTdfQpRw4B7fOdAA+KlGC4Wgyb6+KIexkLzi81Q8QHFCQubarOMhrUwGgCwVk11hxKIHYRHSMo3ssU7dgyIoiEH/1GwuN8si4EEoegpHcU1BKmNp7PB/ZjpPwyN37DANrqvnu1VtX+tSJQOhov5AJqRHDbswHSHc/FIw/HDAan5jfUdahY+VFI7RS7+j/D61iDQ1kD+fWdBeUu2pIXQvn0Vo4nm3jkjLfwiBkmFCAhKLbPZ8V1Vq1gi6fM7Wg5SOj0Y7dBsb7/HertSFoPEOl4P1i+pd2J48Z4J8VsknBELSFvqAq8qNlaKpJWAb9cCEMwBsXtc5JeLU4Ej3ubQKEG2oMxgPuFQTkwSXhz9QtWcuEPH99trN6OiC6lEY75TNi37yDNmKmHBBlhk26Ywqasrgxv2im9ECsivyPffiS12DHyZR31lXF1PCC9ThJFPjAbevBjM6/sSXpoFq3w25BdCsBoRF6Q8ypx+5ecl/aZZIBe8SsQbPzdAdcpQuXD9jYZ4pngn3KnQ4L+ZHDWwSwLvENS15m1JU=
+  on:
+    tags: true
+    repo: Kilix/storybook-addon-props-fela
+api_key: 15a8e926-ad07-4863-93e3-868dd41fb55f
 email: wcastand@gmail.com
 provider: npm
 cache:
@@ -21,6 +28,3 @@ branches:
 env:
   global:
   - secure: Gka1BOLAwDPhKmeJLPqiKV2qHNRV9Uf5Gcnc6Wn8BKZMPIqz8XUShiwrgdMf54Wu7qehOFL+uxFO1Wc5UMXmv7MaEn9el/eNECw4yyW9XkChVdrJ9pWXBWZFbwVb7TIjLp2Txt195kO2HZ9Vgi1oUPdDN+/q7dxvS96qi8uguWv5eEBA9JQVlmtQd308VXQSrZ7b2qK7Rc2Cqw/Y+Hp+FPxEo6kG8zU2elpAdtrjZzGgVIhYvHjgFOxkwTur5Xb1G4vAftNTzqqTC9ET4uySCS3gdSGV6h25Ar7zq77RZETLKm6k6cXVHiSnKw6nWFSg6ukDT3lcE9WktXPoX2MJDiS5HeUddJRTfkpeZk3x8FO+2vBOGzlle7annALof8fqtJMeqrOXaiTg5TX0lr0vjdjU/fwUBcYWBdP8gFUWq7AO7YD9Jneovh0CDQsGlDYPaRl3EiIbUdWGIJyij/9sMQLt+wM7r4y7ezsJK3WMe+4bloiGpJPAag2/KQ1qhpSD3fTef4w01aiJ2w+1Gbu99LOvwbiPhqWXBOuBltHHPL5nftKehA8ppSSRcbaugV1Apr3Hnwwd54yeeTxF7T3iR+CcRJwYNF0/OhJsGZGERA4eosglfNK7a5DgbhbYpAxIeXhHmVAryv/GeGTvQcnmxs61AgenrvFDTtq+ZmErXu0=
-deploy:
-  on:
-    tags: true
