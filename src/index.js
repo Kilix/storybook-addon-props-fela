@@ -8,10 +8,13 @@ export const isProvider = El => El.type.name === 'Provider';
 export const exploreChildren = El => isProvider(El) ? exploreChildren(El.props.children) : El;
 
 export const parseProps = El =>
-  Object.keys(El.props).reduce(
+  Object.keys(El.type.propTypes || El.props).reduce(
     (arr, x) =>
       Object.assign({}, arr, {
-        [x]: { value: El.props[x], default: El.type.defaultProps && El.type.defaultProps[x] },
+        [x]: {
+          value: El.type.propTypes ? El.type.propTypes[x] : El.props[x],
+          default: El.type.defaultProps && El.type.defaultProps[x],
+        },
       }),
     {},
   );
@@ -24,7 +27,7 @@ export const listProps = props =>
           <span style={styles.item}>{prop}</span>
           <span style={styles.item}>{props[prop].value}</span>
           <span style={styles.item}>
-            {props[prop].default ? props[prop].default : 'null'}
+            {props[prop].default ? props[prop].default : null}
           </span>
         </div>,
       );
@@ -44,7 +47,7 @@ export const PropsProvider = story => (
         <span style={styles.head}>Default</span>
       </div>
       <div style={styles.body}>
-        {compose(listProps, omit(['children']), parseProps, exploreChildren)(story())}
+        {compose(listProps, parseProps, omit(['children']), exploreChildren)(story())}
       </div>
     </div>
   </div>

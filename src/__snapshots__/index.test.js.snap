@@ -38,9 +38,7 @@ exports[`listProps 1`] = `
         "padding": "12px 5px",
       }
     }
-  >
-    null
-  </span>
+  />
 </div>
 `;
 
@@ -82,8 +80,6 @@ exports[`listProps 2`] = `
         "padding": "12px 5px",
       }
     }
-  >
-    null
-  </span>
+  />
 </div>
 `;
