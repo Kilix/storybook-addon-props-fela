@@ -18,6 +18,7 @@
     "test:dev": "jest --watch",
     "prebuild": "rimraf lib",
     "storybook": "start-storybook -p 6006 -c ./exemple/.storybook",
+    "preversion": "npm run build",
     "2npm": "publish"
   },
   "devDependencies": {
