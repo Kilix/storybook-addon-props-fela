@@ -17,10 +17,7 @@
     "test:all": "jest",
     "test:dev": "jest --watch",
     "prebuild": "rimraf lib",
-    "storybook": "start-storybook -p 6006 -c ./exemple/.storybook",
-    "preversion": "npm run test",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags"
+    "storybook": "start-storybook -p 6006 -c ./exemple/.storybook"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
