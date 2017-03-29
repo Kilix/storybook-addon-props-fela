@@ -1,16 +1,23 @@
 language: node_js
+deploy:
+api_key:
+email: wcastand@gmail.com
+provider: npm
 cache:
   directories:
-    - node_modules
+  - node_modules
 notifications:
   email: false
 node_js:
-  - '7'
+- '7'
 before_script:
-  - npm prune
+- npm prune
 script:
-  - npm run test
-  - npm run build
+- npm run test
+- npm run build
 branches:
   except:
-    - /^v\d+\.\d+\.\d+$/
+  - /^v\d+\.\d+\.\d+$/
+env:
+  global:
+  - secure: Gka1BOLAwDPhKmeJLPqiKV2qHNRV9Uf5Gcnc6Wn8BKZMPIqz8XUShiwrgdMf54Wu7qehOFL+uxFO1Wc5UMXmv7MaEn9el/eNECw4yyW9XkChVdrJ9pWXBWZFbwVb7TIjLp2Txt195kO2HZ9Vgi1oUPdDN+/q7dxvS96qi8uguWv5eEBA9JQVlmtQd308VXQSrZ7b2qK7Rc2Cqw/Y+Hp+FPxEo6kG8zU2elpAdtrjZzGgVIhYvHjgFOxkwTur5Xb1G4vAftNTzqqTC9ET4uySCS3gdSGV6h25Ar7zq77RZETLKm6k6cXVHiSnKw6nWFSg6ukDT3lcE9WktXPoX2MJDiS5HeUddJRTfkpeZk3x8FO+2vBOGzlle7annALof8fqtJMeqrOXaiTg5TX0lr0vjdjU/fwUBcYWBdP8gFUWq7AO7YD9Jneovh0CDQsGlDYPaRl3EiIbUdWGIJyij/9sMQLt+wM7r4y7ezsJK3WMe+4bloiGpJPAag2/KQ1qhpSD3fTef4w01aiJ2w+1Gbu99LOvwbiPhqWXBOuBltHHPL5nftKehA8ppSSRcbaugV1Apr3Hnwwd54yeeTxF7T3iR+CcRJwYNF0/OhJsGZGERA4eosglfNK7a5DgbhbYpAxIeXhHmVAryv/GeGTvQcnmxs61AgenrvFDTtq+ZmErXu0=
