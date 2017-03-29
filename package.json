@@ -17,7 +17,8 @@
     "test:all": "jest",
     "test:dev": "jest --watch",
     "prebuild": "rimraf lib",
-    "storybook": "start-storybook -p 6006 -c ./exemple/.storybook"
+    "storybook": "start-storybook -p 6006 -c ./exemple/.storybook",
+    "2npm": "publish"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
@@ -27,6 +28,7 @@
     "babel-preset-react": "^6.23.0",
     "jest": "^19.0.2",
     "prettier": "^0.22.0",
+    "publish": "^0.6.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-fela": "^4.3.2",
