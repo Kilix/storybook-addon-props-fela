@@ -4,7 +4,7 @@ import omit from 'lodash/fp/omit';
 
 export const getName = El =>
   typeof El.type === 'function'
-    ? El.type.name
+    ? El.type.displayName ? El.type.displayName : El.type.name
     : typeof El.type === 'object' ? El.type.displayName : El.type;
 
 // React element -> Boolean
