@@ -5,7 +5,13 @@ import omit from 'lodash/fp/omit';
 // React element -> Boolean
 export const isProvider = El => El.type.name === 'Provider';
 // React element -> Object
-export const exploreChildren = El => isProvider(El) ? exploreChildren(El.props.children) : El;
+export const exploreChildren = target =>
+  El =>
+    !isProvider(El) &&
+      (target === null ||
+        (El.type.displayName ? El.type.displayName : El.type) === target.toLowerCase())
+      ? El
+      : exploreChildren(target)(El.props.children);
 
 export const parseProps = El =>
   Object.keys(El.type.propTypes || El.props).reduce(
@@ -37,21 +43,22 @@ export const listProps = props =>
   );
 
 // Story -> JSX
-export const PropsProvider = story => (
-  <div>
-    {story()}
-    <div style={styles.props}>
-      <div style={styles.header}>
-        <span style={styles.head}>Prop</span>
-        <span style={styles.head}>Value</span>
-        <span style={styles.head}>Default</span>
-      </div>
-      <div style={styles.body}>
-        {compose(listProps, parseProps, omit(['children']), exploreChildren)(story())}
+export const PropsProvider = (target = null) =>
+  story => (
+    <div>
+      {story()}
+      <div style={styles.props}>
+        <div style={styles.header}>
+          <span style={styles.head}>Prop</span>
+          <span style={styles.head}>Value</span>
+          <span style={styles.head}>Default</span>
+        </div>
+        <div style={styles.body}>
+          {compose(listProps, omit(['children']), parseProps, exploreChildren(target))(story())}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 
 export default PropsProvider;
 

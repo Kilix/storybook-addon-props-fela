@@ -20,12 +20,12 @@ Test.propsTypes = {
 
 storiesOf('test', module)
   .addDecorator(FelaProvider)
-  .addDecorator(PropsProvider)
+  .addDecorator(PropsProvider('Test'))
   .add('Paris', () => (
     <Test fontSize={45} fontFamily="Roboto" align="center" color="#CAF200">Hello</Test>
   ))
   .add('Orleans', () => <Test color="#236544">Hello</Test>);
 
 storiesOf('test 2', module)
-  .addDecorator(PropsProvider)
+  .addDecorator(PropsProvider('div'))
   .add('Paris', () => <div color="#333">test</div>);
