@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`listProps 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "stretch",
+      "borderBottom": "1px solid rgba(175, 175, 175, .3)",
+      "display": "flex",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "flex-start",
+    }
+  }
+>
+  <span
+    style={
+      Object {
+        "flex": 1,
+        "padding": "12px 5px",
+      }
+    }
+  >
+    children
+  </span>
+  <span
+    style={
+      Object {
+        "flex": 1,
+        "padding": "12px 5px",
+      }
+    }
+  />
+  <span
+    style={
+      Object {
+        "flex": 1,
+        "padding": "12px 5px",
+      }
+    }
+  >
+    null
+  </span>
+</div>
+`;
+
+exports[`listProps 2`] = `
+<div
+  style={
+    Object {
+      "alignItems": "stretch",
+      "borderBottom": "1px solid rgba(175, 175, 175, .3)",
+      "display": "flex",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "flex-start",
+    }
+  }
+>
+  <span
+    style={
+      Object {
+        "flex": 1,
+        "padding": "12px 5px",
+      }
+    }
+  >
+    color
+  </span>
+  <span
+    style={
+      Object {
+        "flex": 1,
+        "padding": "12px 5px",
+      }
+    }
+  />
+  <span
+    style={
+      Object {
+        "flex": 1,
+        "padding": "12px 5px",
+      }
+    }
+  >
+    null
+  </span>
+</div>
+`;
