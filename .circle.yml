@@ -1,7 +1,8 @@
+dependencies:
+  pre:
+    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 deployment:
   npm:
-    branch: master
-    commands:
-      # login using environment variables
-      - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
-      - npm run 2npm
+    tag: /v[0-9]+(\.[0-9]+)*/
+        commands:
+          - npm run 2npm
