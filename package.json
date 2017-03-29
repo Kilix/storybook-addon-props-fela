@@ -1,10 +1,14 @@
 {
   "name": "storybook-addon-props-fela",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Show props of a fela component in storybook",
   "main": "lib/index.js",
   "author": "wcastand",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kilix/storybook-addon-props-fela"
+  },
   "scripts": {
     "build": "babel src --out-dir lib --ignore spec.js,test.js",
     "build:dev": "babel -w src --out-dir lib --ignore spec.js,test.js",
@@ -13,7 +17,8 @@
     "test": "npm run lint && npm run test:all",
     "test:all": "jest",
     "test:dev": "jest --watch",
-    "storybook": "start-storybook -p 6006 -c ./exemple/.storybook"
+    "storybook": "start-storybook -p 6006 -c ./exemple/.storybook",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
@@ -27,7 +32,8 @@
     "react-dom": "^15.4.2",
     "react-fela": "^4.3.2",
     "react-test-renderer": "^15.4.2",
-    "regenerator-runtime": "^0.10.3"
+    "regenerator-runtime": "^0.10.3",
+    "semantic-release": "^6.3.2"
   },
   "dependencies": {
     "fela": "4.3.2",
