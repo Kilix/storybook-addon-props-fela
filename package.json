@@ -18,7 +18,8 @@
     "test:dev": "jest --watch",
     "prebuild": "rimraf lib",
     "storybook": "start-storybook -p 6006 -c ./exemple/.storybook",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
@@ -26,6 +27,8 @@
     "babel-jest": "^19.0.0",
     "babel-preset-env": "^1.2.2",
     "babel-preset-react": "^6.23.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
     "jest": "^19.0.2",
     "prettier": "^0.22.0",
     "react": "^15.4.2",
@@ -39,5 +42,10 @@
   "dependencies": {
     "fela": "4.3.2",
     "lodash": "4.17.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
