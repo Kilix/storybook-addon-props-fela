@@ -35,7 +35,7 @@ export const renderList = props =>
             {!isNil(props[prop].prop) ? props[prop].prop.toString() : '-'}
           </span>
           <span style={styles.item}>
-            {String.fromCharCode(!isNil(props[prop].required) ? 10004 : 10007)}
+            {!isNil(props[prop].required) ? String.fromCharCode(10004) : '-'}
           </span>
           <span style={styles.item}>
             {!isNil(props[prop].defaultProps) ? props[prop].defaultProps.toString() : '-'}

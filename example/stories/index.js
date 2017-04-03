@@ -14,8 +14,11 @@ const test = ({ color }) => ({
 
 const Test = createComponent(test, 'h1');
 Test.defaultProps = { color: '#333' };
-Test.propsTypes = {
-  color: PropTypes.string,
+Test.propTypes = {
+  align: PropTypes.string,
+  color: PropTypes.string.isRequired,
+  fontFamily: PropTypes.string,
+  fontSize: PropTypes.number,
 };
 
 setAddon(PropsAddon);

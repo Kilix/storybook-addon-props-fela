@@ -17,7 +17,7 @@
     "test:all": "jest",
     "test:dev": "jest --watch",
     "prebuild": "rimraf lib",
-    "storybook": "start-storybook -p 9009 -c ./exemple/.storybook",
+    "storybook": "start-storybook -p 9009 -c ./example/.storybook",
     "preversion": "npm run build",
     "release": "npm run release",
     "2npm": "publish"
