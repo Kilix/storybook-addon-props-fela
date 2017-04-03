@@ -121,7 +121,6 @@ Avatar.propTypes = {
     border: PropTypes.bool,
     small: PropTypes.bool,
     tiny: PropTypes.bool,
-    vamosTheme: PropTypes.string,
 };
 
 const enhance = R.pipe(getContextThemeDecorator);
