@@ -2,7 +2,7 @@
 
 Document the props of your components in storybook.
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot-props.png)
 
 ### Why not [react-storybook-addon-info](https://github.com/storybooks/react-storybook-addon-info) ?
 
