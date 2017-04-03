@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { setAddon, storiesOf } from '@kadira/storybook';
 import { createComponent } from 'react-fela';
 
 import initFelaProvider from './initFela';
-import PropsProvider from '../../lib/index';
+import PropsAddon from '../../lib/index';
 
 const FelaProvider = initFelaProvider();
 
@@ -18,14 +18,15 @@ Test.propsTypes = {
   color: PropTypes.string,
 };
 
+setAddon(PropsAddon);
+
 storiesOf('test', module)
   .addDecorator(FelaProvider)
-  .addDecorator(PropsProvider('Test'))
-  .add('Paris', () => (
-    <Test fontSize={45} fontFamily="Roboto" align="center" color="#CAF200">Hello</Test>
-  ))
-  .add('Orleans', () => <Test color="#236544">Hello</Test>);
+  .addWithProps(
+    'Paris',
+    () => <Test fontSize={45} fontFamily="Roboto" align="center" color="#CAF200">Hello</Test>,
+    Test,
+  )
+  .addWithProps('Orleans', () => <Test color="#236544">Hello</Test>, Test);
 
-storiesOf('test 2', module)
-  .addDecorator(PropsProvider('div'))
-  .add('Paris', () => <div color="#333">test</div>);
+storiesOf('test 2', module).addWithProps('Paris', () => <div color="#333">test</div>);

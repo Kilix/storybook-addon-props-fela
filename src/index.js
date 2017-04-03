@@ -1,43 +1,44 @@
 import React from 'react';
 import compose from 'lodash/fp/compose';
 import omit from 'lodash/fp/omit';
+import isNil from 'lodash/fp/isNil';
 
-export const getName = El =>
-  typeof El.type === 'function'
-    ? El.type.displayName ? El.type.displayName : El.type.name
-    : typeof El.type === 'object' ? El.type.displayName : El.type;
-
-// React element -> Boolean
-export const isProvider = El => getName(El) === 'Provider';
-
-// React element -> Object
-export const exploreChildren = target =>
-  El =>
-    (!isProvider(El) && target === '') || getName(El).toUpperCase() === target.toUpperCase()
-      ? El
-      : exploreChildren(target)(El.props.children);
-
-export const parseProps = El =>
-  Object.keys(El.type.propTypes || El.props).reduce(
+const filterProps = omit(['children']);
+export const parseProps = (props, defaultProps, propTypes) =>
+  Object.keys(!isNil(propTypes) ? propTypes : props).reduce(
     (arr, x) =>
       Object.assign({}, arr, {
         [x]: {
-          value: El.type.propTypes ? El.type.propTypes[x] : El.props[x],
-          default: El.type.defaultProps && El.type.defaultProps[x],
+          prop: props[x],
+          required: !isNil(propTypes) ? propTypes[x].required : null,
+          defaultProps: !isNil(defaultProps) ? defaultProps[x] : null,
         },
       }),
     {},
   );
+export const pickProps = raw =>
+  story => {
+    const defaultProps = !isNil(raw.defaultProps) ? raw.defaultProps : null;
+    const propTypes = !isNil(story.type.__docgenInfo)
+      ? story.type.__docgenInfo.props
+      : !isNil(raw.propTypes) ? raw.propTypes : null;
+    return parseProps(story.props, defaultProps, propTypes);
+  };
 
-export const listProps = props =>
+export const renderList = props =>
   Object.keys(props).reduce(
     (arr, prop) => {
       arr.push(
         <div key={Math.random()} style={styles.row}>
           <span style={styles.item}>{prop}</span>
-          <span style={styles.item}>{props[prop].value}</span>
           <span style={styles.item}>
-            {props[prop].default ? props[prop].default : null}
+            {!isNil(props[prop].prop) ? props[prop].prop.toString() : '-'}
+          </span>
+          <span style={styles.item}>
+            {String.fromCharCode(!isNil(props[prop].required) ? 10004 : 10007)}
+          </span>
+          <span style={styles.item}>
+            {!isNil(props[prop].defaultProps) ? props[prop].defaultProps.toString() : '-'}
           </span>
         </div>,
       );
@@ -45,40 +46,41 @@ export const listProps = props =>
     },
     [],
   );
-
-// Story -> JSX
-export const PropsProvider = (target = '') =>
-  story => (
-    <div>
-      {story()}
-      <div style={styles.props}>
-        <div style={styles.header}>
-          <span style={styles.head}>Prop</span>
-          <span style={styles.head}>Value</span>
-          <span style={styles.head}>Default</span>
-        </div>
-        <div style={styles.body}>
-          {compose(listProps, omit(['children']), parseProps, exploreChildren(target))(story())}
+export default {
+  addWithProps(kind, story, raw = {}) {
+    const customStory = () => (
+      <div>
+        {story()}
+        <div style={styles.props}>
+          <div style={styles.header}>
+            <span style={styles.head}>Prop</span>
+            <span style={styles.head}>Value</span>
+            <span style={styles.head}>IsRequired</span>
+            <span style={styles.head}>Default</span>
+          </div>
+          <div style={styles.body}>
+            {compose(renderList, filterProps, pickProps(raw))(story())}
+          </div>
         </div>
       </div>
-    </div>
-  );
-
-export default PropsProvider;
+    );
+    return this.add(kind, customStory);
+  },
+};
 
 const styles = {
   props: {
     fontFamily: 'Roboto, sans-serif',
     color: '#333',
-    maxWidth: 500,
     borderTop: '1px solid #AFAFAF',
+    marginTop: 35,
   },
   header: {
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'stretch',
+    alignItems: 'flex-start',
     borderBottom: '1px solid #AFAFAF',
     fontSize: '18px',
   },
@@ -99,7 +101,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'stretch',
+    alignItems: 'flex-start',
     borderBottom: '1px solid rgba(175, 175, 175, .3)',
   },
   item: {

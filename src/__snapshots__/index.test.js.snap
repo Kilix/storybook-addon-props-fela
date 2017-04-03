@@ -1,85 +1,112 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`listProps 1`] = `
-<div
-  style={
-    Object {
-      "alignItems": "stretch",
-      "borderBottom": "1px solid rgba(175, 175, 175, .3)",
-      "display": "flex",
-      "flex": 1,
-      "flexDirection": "row",
-      "justifyContent": "flex-start",
-    }
-  }
->
-  <span
+exports[`renderList 1`] = `
+<div>
+  <div
     style={
       Object {
+        "alignItems": "flex-start",
+        "borderBottom": "1px solid rgba(175, 175, 175, .3)",
+        "display": "flex",
         "flex": 1,
-        "padding": "12px 5px",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
       }
     }
   >
-    children
-  </span>
-  <span
-    style={
-      Object {
-        "flex": 1,
-        "padding": "12px 5px",
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
       }
-    }
-  />
-  <span
-    style={
-      Object {
-        "flex": 1,
-        "padding": "12px 5px",
+    >
+      color
+    </span>
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
       }
-    }
-  />
-</div>
-`;
-
-exports[`listProps 2`] = `
-<div
-  style={
-    Object {
-      "alignItems": "stretch",
-      "borderBottom": "1px solid rgba(175, 175, 175, .3)",
-      "display": "flex",
-      "flex": 1,
-      "flexDirection": "row",
-      "justifyContent": "flex-start",
-    }
-  }
->
-  <span
+    >
+      #000
+    </span>
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
+      }
+    >
+      ✗
+    </span>
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
+      }
+    >
+      #333
+    </span>
+  </div>
+  <div
     style={
       Object {
+        "alignItems": "flex-start",
+        "borderBottom": "1px solid rgba(175, 175, 175, .3)",
+        "display": "flex",
         "flex": 1,
-        "padding": "12px 5px",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
       }
     }
   >
-    color
-  </span>
-  <span
-    style={
-      Object {
-        "flex": 1,
-        "padding": "12px 5px",
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
       }
-    }
-  />
-  <span
-    style={
-      Object {
-        "flex": 1,
-        "padding": "12px 5px",
+    >
+      children
+    </span>
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
       }
-    }
-  />
+    >
+      Hello
+    </span>
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
+      }
+    >
+      ✗
+    </span>
+    <span
+      style={
+        Object {
+          "flex": 1,
+          "padding": "12px 5px",
+        }
+      }
+    >
+      -
+    </span>
+  </div>
 </div>
 `;

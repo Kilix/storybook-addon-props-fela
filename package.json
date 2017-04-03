@@ -1,7 +1,7 @@
 {
-  "name": "storybook-addon-props-fela",
+  "name": "storybook-addon-props",
   "version": "0.0.6",
-  "description": "Show props of a fela component in storybook",
+  "description": "Show props of a component in storybook",
   "main": "lib/index.js",
   "author": "wcastand",
   "license": "MIT",
@@ -17,8 +17,9 @@
     "test:all": "jest",
     "test:dev": "jest --watch",
     "prebuild": "rimraf lib",
-    "storybook": "start-storybook -p 6006 -c ./exemple/.storybook",
+    "storybook": "start-storybook -p 9009 -c ./exemple/.storybook",
     "preversion": "npm run build",
+    "release": "npm run release",
     "2npm": "publish"
   },
   "devDependencies": {
@@ -27,18 +28,20 @@
     "babel-jest": "^19.0.0",
     "babel-preset-env": "^1.2.2",
     "babel-preset-react": "^6.23.0",
+    "fela": "4.3.2",
     "jest": "^19.0.2",
     "prettier": "^0.22.0",
     "publish": "^0.6.0",
     "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-fela": "^4.3.2",
     "react-test-renderer": "^15.4.2",
     "regenerator-runtime": "^0.10.3",
+    "release": "^1.1.7",
     "rimraf": "^2.6.1"
   },
   "dependencies": {
-    "fela": "4.3.2",
     "lodash": "4.17.4"
   }
 }
