@@ -5,6 +5,13 @@
   "main": "lib/index.js",
   "author": "wcastand",
   "license": "MIT",
+  "keywords": [
+    "fela",
+    "storybook",
+    "react",
+    "addon",
+    "props"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Kilix/storybook-addon-props-fela"
