@@ -1,4 +1,5 @@
 import React from 'react';
+import addons from '@kadira/storybook-addons';
 import compose from 'lodash/fp/compose';
 import omit from 'lodash/fp/omit';
 import isNil from 'lodash/fp/isNil';
@@ -25,87 +26,14 @@ export const pickProps = raw =>
     return parseProps(story.props, defaultProps, propTypes);
   };
 
-export const renderList = props =>
-  Object.keys(props).reduce(
-    (arr, prop) => {
-      arr.push(
-        <div key={Math.random()} style={styles.row}>
-          <span style={styles.item}>{prop}</span>
-          <span style={styles.item}>
-            {!isNil(props[prop].prop) ? props[prop].prop.toString() : '-'}
-          </span>
-          <span style={styles.item}>
-            {!isNil(props[prop].required) ? String.fromCharCode(10004) : '-'}
-          </span>
-          <span style={styles.item}>
-            {!isNil(props[prop].defaultProps) ? props[prop].defaultProps.toString() : '-'}
-          </span>
-        </div>,
-      );
-      return arr;
-    },
-    [],
-  );
 export default {
   addWithProps(kind, story, raw = {}) {
-    const customStory = () => (
-      <div>
-        {story()}
-        <div style={styles.props}>
-          <div style={styles.header}>
-            <span style={styles.head}>Prop</span>
-            <span style={styles.head}>Value</span>
-            <span style={styles.head}>IsRequired</span>
-            <span style={styles.head}>Default</span>
-          </div>
-          <div style={styles.body}>
-            {compose(renderList, filterProps, pickProps(raw))(story())}
-          </div>
-        </div>
-      </div>
-    );
+    const channel = addons.getChannel();
+    const customStory = () => {
+      const props = compose(filterProps, pickProps(raw))(story());
+      channel.emit('kadira/props/add_props', props);
+      return story();
+    };
     return this.add(kind, customStory);
-  },
-};
-
-const styles = {
-  props: {
-    fontFamily: 'Roboto, sans-serif',
-    color: '#333',
-    borderTop: '1px solid #AFAFAF',
-    marginTop: 35,
-  },
-  header: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    borderBottom: '1px solid #AFAFAF',
-    fontSize: '18px',
-  },
-  head: {
-    flex: 1,
-    padding: '12px 5px',
-  },
-  body: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    fontSize: '14px',
-  },
-  row: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    borderBottom: '1px solid rgba(175, 175, 175, .3)',
-  },
-  item: {
-    flex: 1,
-    padding: '12px 5px',
   },
 };
